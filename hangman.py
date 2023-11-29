@@ -17,6 +17,12 @@ def hangman():
 
     lives = 6
 
+    # game introduction
+    print("Welcome to the Hangman game!")
+    print()
+    print("RULES: Guess the secret word before you run out of lives.")
+    print()
+
     # get user input
     while len(word_letters) > 0 and lives > 0:
         # letters used
@@ -26,6 +32,7 @@ def hangman():
         # tell user what current word is (ex. W - R D)
         word_list = [letter if letter in used_letters else "-" for letter in word]
         print("Current word: ", " ".join(word_list))
+        print()
 
         user_letter = input("Guess a letter: ").upper()
         if user_letter in alphabet - used_letters:
@@ -36,12 +43,15 @@ def hangman():
             else:
                 lives = lives - 1 # subtracts a life if wrong
                 print("Letter is not in the word.")
+                print()
 
         elif user_letter in used_letters:
             print("You have already guessed that letter. Please try again.")
+            print()
         
         else:
             print("Invalid character. Please try again.")
+            print()
 
     # gets here when len(word_letters) == 0 or when lives == 0
     if lives == 0:
